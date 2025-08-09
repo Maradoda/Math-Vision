@@ -1,16 +1,32 @@
 # Unity
+# このセクションはUnityが自動生成する一時的なファイルやフォルダを無視します。
+# これらをGitに含めると、リポジトリが肥大化し、コンフリクトの原因になります。
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+.utmp/
+/[Mm]emory[Cc]aptures/
+/[Aa]ssets/AssetStoreTools*
 
-# Visual Studio / Rider
-/[Ee]xported[Oo]bj/
+# Unity Burstコンパイラが生成するデバッグ情報。絶対にシップしないでください。
+*_BurstDebugInformation_DoNotShip/
+
+# ビルド成果物
+# APKや実行ファイルなどは、ソースコードから生成されるものなので管理対象外とします。
+/[Bb]uild/
+/[Bb]uilds/
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Visual Studio / Rider / VS CodeなどのIDE関連ファイル
+# これらは個人の環境設定ファイルなので、チームで共有しません。
 .vs/
 .vscode/
+/[Ee]xported[Oo]bj/
 *.csproj
 *.unityproj
 *.sln
@@ -26,5 +42,6 @@
 *.opendb
 *.VC.db
 
-# Mac
+# macOS / Windows のOS固有ファイル
 .DS_Store
+Thumbs.db

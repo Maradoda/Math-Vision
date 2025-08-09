@@ -1,70 +1,86 @@
 using UnityEngine;
-using UnityEngine.UI;    // UI要素を扱うために必要
-using TMPro;             // TextMeshProを扱うために必要
-using System.Collections.Generic; // Listを扱うために必要
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
 public class ContentPageController : MonoBehaviour
 {
-    // Inspectorから設定する共通のUI要素
+    // --- 共通UI ---
     public TMP_Text yearTitleText;
+    public TMP_Text questionBodyText; // ▼ 追加: 問題本文を表示するText
 
-    // Question_sceneでのみ使うUI要素
-    public Image questionImageDisplay; // 問題図形を表示するImage
-    public List<Button> questionButtons; // 「問1」「問2」などのボタンのリスト
+    // --- 問題ページ専用UI ---
+    public Image questionImageDisplay;
+    public List<Button> questionButtons;
+    public List<TMP_InputField> inputFields;
+    public Button scoringButton;
+    public List<Image> individualResultImages;
+    public Sprite correctSprite;
+    public Sprite incorrectSprite;
 
+    // --- 起動時に実行 ---
     void Start()
     {
-        // GameManagerが存在するか確認
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager not found!");
-            return;
-        }
-
-        // GameManagerから現在の年度データを取得
-        var currentData = GameManager.Instance.currentYearData;
-
-        if (currentData == null) 
+        var currentData = GameManager.Instance?.currentYearData;
+        if (currentData == null)
         {
             Debug.LogError("Current Year Data is not set in GameManager!");
             return;
         }
 
-        // yearTitleTextの更新
+        // 年度のタイトルを設定
         if (yearTitleText != null)
         {
-            // 表示ルールに合わせて年度タイトルを設定 (例: R7 -> 令和7年)
-            yearTitleText.text = "令和" + currentData.yearIdentifier.Substring(1) + "年度";
+            string yearNumber = currentData.yearIdentifier.Substring(1);
+            yearTitleText.text = $"令和{yearNumber}年度";
         }
         
-        // 問題ページのセットアップ処理 (Question_sceneでのみ動作)
-        if (questionButtons != null && questionButtons.Count > 0 && questionImageDisplay != null)
+        // ▼ 追加: 問題本文をUIに設定
+        if (questionBodyText != null)
+        {
+            questionBodyText.text = currentData.questionText;
+        }
+
+        // 問題の画像表示エリアを初期状態では非表示（透明）にする
+        if (questionImageDisplay != null)
+        {
+            questionImageDisplay.color = Color.clear;
+        }
+
+        // 問題ページのUIセットアップ
+        if (questionButtons != null && questionButtons.Count > 0)
         {
             SetupQuestionButtons(currentData);
+        }
+
+        if (inputFields != null && inputFields.Count > 0)
+        {
+            SetupInputFields(currentData);
+        }
+
+        // 採点ボタンにイベントを登録
+        if (scoringButton != null)
+        {
+            scoringButton.onClick.AddListener(CheckAnswers);
+        }
+
+        // 初期状態では個別の結果画像を非表示に
+        if (individualResultImages != null)
+        {
+            foreach (var img in individualResultImages)
+            {
+                img.gameObject.SetActive(false);
+            }
         }
     }
 
     void SetupQuestionButtons(YearQuestionData data)
     {
-        // まず全てのボタンを非表示にする
         foreach (var btn in questionButtons)
         {
             btn.gameObject.SetActive(false);
         }
-        
-        // 最初の図形を自動で表示しておく
-        if (data.questionImages.Count > 0)
-        {
-            questionImageDisplay.sprite = data.questionImages[0];
-            questionImageDisplay.color = Color.white;
-        }
-        else
-        {
-            // 表示する図形がない場合は透明にする
-            questionImageDisplay.color = new Color(1,1,1,0);
-        }
 
-        // データとして存在する図形の数だけボタンをセットアップする
         for (int i = 0; i < data.questionImages.Count; i++)
         {
             if (i >= questionButtons.Count) break;
@@ -74,15 +90,61 @@ public class ContentPageController : MonoBehaviour
 
             button.gameObject.SetActive(true);
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => 
+            button.onClick.AddListener(() =>
             {
-                questionImageDisplay.sprite = imageToShow;
-                questionImageDisplay.color = Color.white;
+                if (questionImageDisplay != null)
+                {
+                    questionImageDisplay.sprite = imageToShow;
+                    questionImageDisplay.color = Color.white;
+                }
             });
         }
     }
-    
-    // --- シーン遷移の関数 ---
+
+    void SetupInputFields(YearQuestionData data)
+    {
+        foreach (var field in inputFields)
+        {
+            field.gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < data.questionAnswers.Count; i++)
+        {
+            if (i < inputFields.Count)
+            {
+                inputFields[i].gameObject.SetActive(true);
+                inputFields[i].text = "";
+            }
+        }
+    }
+
+    public void CheckAnswers()
+    {
+        var currentData = GameManager.Instance?.currentYearData;
+        if (currentData == null) return;
+
+        for (int i = 0; i < currentData.questionAnswers.Count; i++)
+        {
+            if (i >= inputFields.Count || i >= individualResultImages.Count) break;
+
+            string userAnswer = inputFields[i].text.Trim();
+            string correctAnswer = currentData.questionAnswers[i];
+            Image resultImg = individualResultImages[i];
+
+            resultImg.gameObject.SetActive(true);
+
+            if (userAnswer == correctAnswer)
+            {
+                resultImg.sprite = correctSprite;
+            }
+            else
+            {
+                resultImg.sprite = incorrectSprite;
+            }
+        }
+    }
+
+    // --- シーン遷移 ---
     public void OnClickTopButton()
     {
         GameManager.Instance?.LoadTopPageScene();

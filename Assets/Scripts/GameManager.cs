@@ -1,29 +1,28 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic; // Listを扱うために必要
-using System.Linq; // Linqを扱うために必要
+using System.Collections.Generic;
+using System.Linq;
 
-// [System.Serializable] をつけることで、Inspector上に表示できるようになる
+// 年度ごとのデータをまとめるクラス
 [System.Serializable]
 public class YearQuestionData
 {
-    // 年度を識別するための文字列（例: "R7", "R6"）
     public string yearIdentifier;
-    // その年度で使う問題図形のスプライトのリスト
     public List<Sprite> questionImages;
+    public List<string> questionAnswers; // 各問題の答え
+    public string questionText;          // ▼ 変更点：問題本文を保存する変数を追加
 }
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    // 全ての年度の問題データを保持するリスト
+    // 全ての年度のデータを保持するリスト
     public List<YearQuestionData> allYearData;
 
     // 現在選択されている年度のデータ
     public YearQuestionData currentYearData { get; private set; }
 
-    // Awakeメソッドは変更なし
     private void Awake()
     {
         if (Instance == null)
@@ -37,11 +36,9 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    // ★★★ 新しく追加/変更する関数 ★★★
-    // 渡された識別子（"R7"など）をもとに、現在の年度データを設定する
+    // 識別子をもとに、現在の年度データを設定する
     public void SetCurrentYear(string identifier)
     {
-        // allYearDataの中から、識別子が一致するものを探す
         currentYearData = allYearData.FirstOrDefault(data => data.yearIdentifier == identifier);
 
         if (currentYearData != null)
@@ -54,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // --- シーンを読み込むための関数（変更なし） ---
+    // --- シーンを読み込むための関数 ---
     public void LoadTopPageScene()
     {
         SceneManager.LoadScene("TopPage_scene");

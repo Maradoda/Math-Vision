@@ -1,18 +1,26 @@
 using UnityEngine;
-using UnityEngine.UI; // Imageを扱うために必要
+using UnityEngine.UI;
 
 public class TopPageController : MonoBehaviour
 {
-    // Inspectorから設定する、中央に表示するImage UI
+    // 中央に年度の図形を表示するImage
     public Image displayImage;
 
-    // 年度選択ボタンが押されたときに呼ばれる関数
-    // 引数は "R7" のような識別子
+    // --- 起動時に実行 ---
+    void Start()
+    {
+        // 起動時に画像を透明にして非表示にする
+        if (displayImage != null)
+        {
+            displayImage.color = Color.clear;
+        }
+    }
+
+    // 年度選択ボタンが押されたときに呼ばれる
     public void SetSelectedYear(string yearIdentifier)
     {
         if (GameManager.Instance != null)
         {
-            // GameManagerに現在の年度識別子をセットする
             GameManager.Instance.SetCurrentYear(yearIdentifier);
         }
     }
@@ -23,15 +31,12 @@ public class TopPageController : MonoBehaviour
         if (displayImage != null)
         {
             displayImage.sprite = newImage;
-            // 画像が透明な場合は不透明に戻す
-            if (displayImage.color.a < 1)
-            {
-                displayImage.color = Color.white;
-            }
+            // 透明にした色を白（不透明）に戻して表示
+            displayImage.color = Color.white;
         }
     }
 
-    // 問題ボタンが押されたときに呼ばれる関数
+    // 問題ボタンが押されたときに呼ばれる
     public void OnClickQuestionButton()
     {
         if (GameManager.Instance != null)
@@ -40,7 +45,7 @@ public class TopPageController : MonoBehaviour
         }
     }
 
-    // 解説ボタンが押されたときに呼ばれる関数
+    // 解説ボタンが押されたときに呼ばれる
     public void OnClickAnswerButton()
     {
         if (GameManager.Instance != null)
