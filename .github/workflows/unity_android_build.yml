@@ -1,62 +1,45 @@
+name: Unity Android Build (GitHub-Hosted)
 
-# 名前を付ける。これがGithubActions上に表示される
-name: Run the Android build
 on:
   workflow_dispatch: {}
+
 jobs:
   build:
-    name: Run the Android build
-    runs-on: ubuntu-latest
+    name: Build for Android
+    runs-on: ubuntu-latest # GitHubのVMを指定
     steps:
-      # リポジトリのチェックアウト
-      - name: Check out my unity project.
+      # 1. リポジトリのソースコードをチェックアウト
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-      # LFSファイルのキャッシュを取得する
-      - name: Restore LFS cache
-        uses: actions/cache@v3
-        id: lfs-cache
         with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+          lfs: true
 
-      # LFSファイルをPullする
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-
-      # ファイル名にgitのハッシュを含めたいので$GITHUB_OUTPUTに保存しておく
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-        
-      # Cache
-      - uses: actions/cache@v3
+      - name: Cache Library folder
+        uses: actions/cache@v4
         with:
           path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          key: Library-Android-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-
+            Library-Android-
 
-      # Unityプロジェクトのビルド
-      # 設定しない場合、buildフォルダに出力される
-      - name: Run the Android build
-        uses: game-ci/unity-builder@v4
+      # 3. Unityのライセンスを有効化
+      - name: Activate Unity License
+        uses: game-ci/unity-activate@v3
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          targetPlatform: Android
-          unityVersion: 6000.0.50f1  #ここに使うUnityのバージョンを入れる
 
-      # 成果物をZIPにしてアップロードする
-      - name: Upload the Android Build
+      # 4. Unityでビルドを実行
+      - name: Build with Unity
+        uses: game-ci/unity-builder@v4
+        with:
+          unityVersion: 6000.0.50f1
+          targetPlatform: Android
+          buildName: YourGameName.apk
+          buildsPath: build
+
+      # 5. ビルド成果物(APK)をアップロード
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Build-${{ steps.vars.outputs.sha_short }}
-          path: build
+          name: Android-Debug-Build-APK
+          path: build/Android/YourGameName.apk
