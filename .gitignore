@@ -41,6 +41,7 @@
 *.mdb
 *.opendb
 *.VC.db
+.vsconfig
 
 # macOS / Windows のOS固有ファイル
 .DS_Store
