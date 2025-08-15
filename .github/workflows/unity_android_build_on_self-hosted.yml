@@ -1,0 +1,63 @@
+# ワークフロー名（GitHubのActionsタブに表示される）
+name: Unity Build for Android (Self-Hosted)
+
+# ワークフローの実行トリガー（手動実行）
+on:
+  workflow_dispatch: {}
+
+# 複数のワークフローが同時に実行されるのを防ぐ
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Android APK
+    # 実行環境をself-hostedランナーに指定
+    runs-on: self-hosted
+
+    steps:
+      - name: 1. Checkout Project
+        uses: actions/checkout@v4
+        with:
+          # LFSファイルをチェックアウト時に取得する
+          lfs: true
+
+      - name: 2. Prepare Cache Keys
+        run: |
+          # Git-LFSのキャッシュキー用にファイルリストを作成
+          git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      # Libraryフォルダのキャッシュを利用してビルド時間を短縮
+      - name: 3. Restore Library Cache
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-Android-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-Android-
+
+      # Git-LFSのキャッシュを利用してダウンロード時間を短縮
+      - name: 4. Restore LFS Cache
+        uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: LFS-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: 5. Build Unity Project
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: Android
+          # Unityのバージョンは固定することが推奨される
+          unityVersion: 6000.0.50f1
+
+      - name: 6. Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          # ビルド成果物にGitのコミットハッシュを付けて分かりやすくする
+          name: Build-Android-${{ github.sha }}
+          path: build
