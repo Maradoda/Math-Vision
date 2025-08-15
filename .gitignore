@@ -22,6 +22,8 @@
 *.unitypackage
 *.app
 
+.lfs-assets-id
+
 # Visual Studio / Rider / VS CodeなどのIDE関連ファイル
 # これらは個人の環境設定ファイルなので、チームで共有しません。
 .vs/
