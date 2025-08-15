@@ -54,6 +54,7 @@ jobs:
           targetPlatform: Android
           # Unityのバージョンは固定することが推奨される
           unityVersion: 6000.0.50f1
+          chownFilesTo: 1000:1000
 
       - name: 6. Upload Artifact
         uses: actions/upload-artifact@v4
