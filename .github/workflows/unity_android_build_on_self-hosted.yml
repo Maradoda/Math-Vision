@@ -62,3 +62,12 @@ jobs:
           # ビルド成果物にGitのコミットハッシュを付けて分かりやすくする
           name: Build-Android-${{ github.sha }}
           path: build
+
+      - name: 7. Final Workspace Cleanup
+        # ビルドが成功しても失敗しても、必ずこのステップを実行する
+        if: always()
+        run: |
+          echo "Force cleaning up workspace permissions..."
+          # 作業ディレクトリ全体の所有者をpokaユーザーに戻す
+          sudo chown -R poka:poka .
+          echo "Permissions fixed."
