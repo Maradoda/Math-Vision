@@ -1,6 +1,5 @@
 # 名前を付ける。これがGithubActions上に表示される
 name: Run the Android build
-
 on:
   workflow_dispatch: {}
 
@@ -9,7 +8,6 @@ jobs:
     name: Run the Android build
     runs-on: ubuntu-latest
     steps:
-      # ▼▼▼ここから追加▼▼▼
       # 1. ランナーのディスク空き容量を確保するためのクリーンアップ
       - name: Clean up runner to free disk space
         run: |
@@ -24,13 +22,13 @@ jobs:
 
           echo "Disk space after cleanup:"
           df -h
-      # ▲▲▲ここまで追加▲▲▲
 
       # 2. リポジトリのチェックアウト
       - name: Check out my unity project.
         uses: actions/checkout@v4
       - name: Create LFS file list
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
 
       # 3. LFSファイルのキャッシュを取得する
       - name: Restore LFS cache
