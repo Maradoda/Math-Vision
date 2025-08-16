@@ -67,7 +67,7 @@ jobs:
         # ビルドが成功しても失敗しても、必ずこのステップを実行する
         if: always()
         run: |
-          echo "Force cleaning up workspace permissions..."
-          # 作業ディレクトリ全体の所有者をpokaユーザーに戻す
-          sudo chown -R poka:poka .
-          echo "Permissions fixed."
+          echo "Fixing permissions for the entire _work directory..."
+          # '_work'ディレクトリ全体を対象に所有者を変更する
+          sudo chown -R poka:poka /home/poka/actions-runner/_work
+          echo "Permissions fixed for the entire work directory."
