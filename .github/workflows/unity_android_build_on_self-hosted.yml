@@ -47,7 +47,7 @@ jobs:
         with:
           targetPlatform: Android
           unityVersion: 6000.0.50f1
-          customParameters: -EnableCacheServer -cacheServerEndpoint host.docker.internal:10080
+          customParameters: -EnableCacheServer -cacheServerEndpoint unity-cache-server:10080
           containerHookFiles: |
             --network unity-ci-net
 
