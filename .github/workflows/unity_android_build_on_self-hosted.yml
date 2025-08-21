@@ -1,7 +1,7 @@
-# ワークフロー名（GitHubのActionsタブに表示される）
+# ワークフロー名
 name: Unity Build for Android (Self-Hosted)
 
-# ワークフローの実行トリガー（手動実行）
+# ワークフローの実行トリガー
 on:
   workflow_dispatch: {}
 
@@ -17,34 +17,28 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      # 1. プロジェクトのチェックアウト
       - name: 1. Checkout Project
         uses: actions/checkout@v4
         with:
-          # LFSファイルをチェックアウト時に取得する
           lfs: true
 
-      - name: 2. Prepare Cache Keys
+      # 2. LFSキャッシュキーの準備
+      - name: 2. Prepare LFS Cache Key
         run: |
-          # Git-LFSのキャッシュキー用にファイルリストを作成
           git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
 
-      # Libraryフォルダのキャッシュを利用してビルド時間を短縮
-      - name: 3. Restore Library Cache
-        uses: actions/cache@v4
-        with:
-          path: Library
-          key: Library-Android-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-Android-
-
-      # Git-LFSのキャッシュを利用してダウンロード時間を短縮
-      - name: 4. Restore LFS Cache
+      # 3. LFSキャッシュの復元
+      - name: 3. Restore LFS Cache
         uses: actions/cache@v4
         with:
           path: .git/lfs
           key: LFS-${{ hashFiles('.lfs-assets-id') }}
+          restore-keys: |
+            LFS-
 
-      - name: 5. Build Unity Project
+      # 4. Unityプロジェクトのビルド
+      - name: 4. Build Unity Project
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -52,22 +46,22 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: Android
-          # Unityのバージョンは固定することが推奨される
           unityVersion: 6000.0.50f1
+          cacheServerIpAddress: 127.0.0.1
+          cacheServerPort: 8126
           chownFilesTo: 1000:1000
 
-      - name: 6. Upload Artifact
+      # 5. ビルド成果物のアップロード
+      - name: 5. Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          # ビルド成果物にGitのコミットハッシュを付けて分かりやすくする
           name: Build-Android-${{ github.sha }}
           path: build
 
-      - name: 7. Final Workspace Cleanup
-        # ビルドが成功しても失敗しても、必ずこのステップを実行する
+      # 6. 最終的なワークスペースのクリーンアップ
+      - name: 6. Final Workspace Cleanup
         if: always()
         run: |
           echo "Fixing permissions for the entire _work directory..."
-          # '_work'ディレクトリ全体を対象に所有者を変更する
           sudo chown -R poka:poka /home/poka/actions-runner/_work
           echo "Permissions fixed for the entire work directory."
