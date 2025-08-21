@@ -47,6 +47,7 @@ jobs:
         with:
           targetPlatform: Android
           unityVersion: 6000.0.50f1
+          runAsHostUser: true
           customParameters: -EnableCacheServer -cacheServerEndpoint unity-cache-server:10080
           containerHookFiles: |
             --network unity-ci-net
