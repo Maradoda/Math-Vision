@@ -48,6 +48,7 @@ jobs:
           targetPlatform: Android
           unityVersion: 6000.0.50f1
           customParameters: -EnableCacheServer -cacheServerEndpoint host.docker.internal:10080
+          dockerOptions: --add-host=host.docker.internal:host-gateway
 
       # 5. ビルド成果物のアップロード
       - name: 5. Upload Artifact
