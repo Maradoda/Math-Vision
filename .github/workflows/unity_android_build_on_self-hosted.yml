@@ -47,10 +47,21 @@ jobs:
         with:
           targetPlatform: Android
           unityVersion: 6000.0.50f1
-          runAsHostUser: true
-          customParameters: -EnableCacheServer -cacheServerEndpoint unity-cache-server:10080
-          containerHookFiles: |
-            --network unity-ci-net
+          customJob: |
+            # 以下のdocker runコマンドをカスタマイズ
+            - name: Build my-project
+              image: ${{ env.IMAGE_NAME }}
+              options: --workdir /github/workspace --rm --network unity-ci-net --user ${{ env.UID_GID }}
+              env:
+                # 必要なビルド設定をenvで渡す
+                PROJECT_PATH: .
+                BUILD_TARGET: Android
+                CUSTOM_PARAMETERS: -EnableCacheServer -cacheServerEndpoint unity-cache-server:10080 -cacheServerWaitForUploadCompletion
+                VERSION: 0.0.11
+                ANDROID_VERSION_CODE: 11
+              artifacts:
+                - name: build-Android
+                  path: build/Android
 
       # 5. ビルド成果物のアップロード
       - name: 5. Upload Artifact
