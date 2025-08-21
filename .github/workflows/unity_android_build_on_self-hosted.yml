@@ -47,9 +47,7 @@ jobs:
         with:
           targetPlatform: Android
           unityVersion: 6000.0.50f1
-          cacheServerIpAddress: 127.0.0.1
-          cacheServerPort: 8126
-          chownFilesTo: 1000:1000
+          customParameters: -CacheServerIPAddress 127.0.0.1 -CacheServerPort 8126
 
       # 5. ビルド成果物のアップロード
       - name: 5. Upload Artifact
