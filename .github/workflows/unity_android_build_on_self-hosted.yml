@@ -1,60 +1,53 @@
-# GitHub Actions workflow for Unity Android builds
+# .github/workflows/unity-build.yml
 
-name: Unity Android Build
+name: Unity Android Test Build
 
-# ワークフローのトリガー設定
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 jobs:
   build-android:
-    # ジョブの名前
-    name: Build for Android
-    
-    # セルフホスティングランナーで実行 (Linuxを想定)
+    name: Build for Android (Test)
     runs-on: self-hosted
 
     steps:
-      # 1. リポジトリのソースコードをチェックアウト
-      # clean: falseで前回のビルドキャッシュ(Libraryフォルダ等)を維持
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           clean: false
           lfs: true
 
-      # 2. キーストアファイルをSecretsから復元
-      # リリースビルド用のキーストアを安全に配置
-      - name: Decode Keystore
-        run: |
-          echo "Decoding keystore from GitHub Secrets..."
-          echo $KEYSTORE_BASE64 | base64 --decode > ${{ github.workspace }}/maradoda.keystore
-        env:
-          # リポジトリのSecretsに登録したキーストアのBase64文字列
-          KEYSTORE_BASE64: ${{ secrets.UNITY_KEYSTORE_BASE64 }}
+      # 2. キーストアの復元ステップを無効化 (コメントアウト)
+      # - name: Decode Keystore
+      #   run: |
+      #     echo "Decoding keystore from GitHub Secrets..."
+      #     echo $KEYSTORE_BASE64 | base64 --decode > ${{ github.workspace }}/maradoda.keystore
+      #   env:
+      #     KEYSTORE_BASE64: ${{ secrets.UNITY_KEYSTORE_BASE64 }}
 
-      # 3. Unityでビルドを実行
+      - name: Kill Previous Unity Processes
+        run: pkill -9 Unity || true
+
       - name: Build with Unity
         run: |
           UNITY_PATH="/home/poka/Unity/Hub/Editor/6000.0.50f1/Editor/Unity"
-
-          # --- ビルドコマンド ---
+          
           $UNITY_PATH -quit -batchmode -nographics \
             -projectPath . \
             -buildTarget Android \
             -executeMethod BuildScript.PerformAndroidBuild \
             -logFile ./build.log
-        env:
-          # リポジトリのSecretsからキーストアのパスワード情報を環境変数として渡す
-          KEYSTORE_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD }}
-          KEY_ALIAS_NAME: ${{ secrets.UNITY_KEYSTORE_ALIAS }}
-          KEY_ALIAS_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD}}
+        # envブロック全体を削除またはコメントアウト
+        # env:
+        #   KEYSTORE_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD }}
+        #   KEY_ALIAS_NAME: ${{ secrets.UNITY_KEYSTORE_ALIAS }}
+        #   KEY_ALIAS_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD }}
 
-      # 4. ビルド成果物(APK)をアップロード
-      # ワークフローの実行結果ページからダウンロードできるようにする
-      - name: Upload Artifacts
+      - name: Upload Artifacts and Logs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Android-Build-APK
-          # BuildScript.csで指定した出力ファイルパス
-          path: ./Builds/maradoda.apk
+          name: Test-Build-Result-${{ github.run_id }}
+          path: |
+            Builds/
+            build.log

@@ -26,19 +26,7 @@ public class BuildScript
         Debug.Log("Building scenes: " + string.Join(", ", scenes));
 
 
-        // --- 2. ビルド設定（キーストアなど） ---
-        // (この部分は以前のコードと同じ)
-        string keystorePass = Environment.GetEnvironmentVariable("KEYSTORE_PASS");
-        string keyAliasName = Environment.GetEnvironmentVariable("KEY_ALIAS_NAME");
-        string keyAliasPass = Environment.GetEnvironmentVariable("KEY_ALIAS_PASS");
-
-        if (!string.IsNullOrEmpty(keystorePass))
-        {
-            PlayerSettings.Android.keystoreName = "MyProject.keystore";
-            PlayerSettings.Android.keystorePass = keystorePass;
-            PlayerSettings.Android.keyaliasName = keyAliasName;
-            PlayerSettings.Android.keyaliasPass = keyAliasPass;
-        }
+        PlayerSettings.Android.useCustomKeystore = false
 
         EditorUserBuildSettings.buildAppBundle = false;
         string outputPath = "Builds/maradoda.apk";
