@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using System;
 using System.Linq; // LINQを使うために必要
+using UnityEditor.Build.Reporting;
 
 public class BuildScript
 {
@@ -41,7 +42,7 @@ public class BuildScript
 
         EditorUserBuildSettings.buildAppBundle = false;
         string outputPath = "Builds/maradoda.apk";
-        
+
 
         // --- 3. ビルドの実行 ---
         var buildPlayerOptions = new BuildPlayerOptions
