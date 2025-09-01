@@ -48,3 +48,6 @@
 # macOS / Windows のOS固有ファイル
 .DS_Store
 Thumbs.db
+
+# Unity Keystore files
+*.keystore
