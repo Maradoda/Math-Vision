@@ -21,6 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: false
+          lfs: true
 
       # 2. キーストアファイルをSecretsから復元
       # リリースビルド用のキーストアを安全に配置
