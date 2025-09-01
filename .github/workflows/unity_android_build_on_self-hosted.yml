@@ -1,73 +1,59 @@
-# ワークフロー名（GitHubのActionsタブに表示される）
-name: Unity Build for Android (Self-Hosted)
+# GitHub Actions workflow for Unity Android builds
 
-# ワークフローの実行トリガー（手動実行）
+name: Unity Android Build
+
+# ワークフローのトリガー設定
 on:
   workflow_dispatch: {}
 
-# 複数のワークフローが同時に実行されるのを防ぐ
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  build:
-    name: Build Android APK
-    # 実行環境をself-hostedランナーに指定
+  build-android:
+    # ジョブの名前
+    name: Build for Android
+    
+    # セルフホスティングランナーで実行 (Linuxを想定)
     runs-on: self-hosted
 
     steps:
-      - name: 1. Checkout Project
+      # 1. リポジトリのソースコードをチェックアウト
+      # clean: falseで前回のビルドキャッシュ(Libraryフォルダ等)を維持
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          # LFSファイルをチェックアウト時に取得する
-          lfs: true
+          clean: false
 
-      - name: 2. Prepare Cache Keys
+      # 2. キーストアファイルをSecretsから復元
+      # リリースビルド用のキーストアを安全に配置
+      - name: Decode Keystore
         run: |
-          # Git-LFSのキャッシュキー用にファイルリストを作成
-          git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-      # Libraryフォルダのキャッシュを利用してビルド時間を短縮
-      - name: 3. Restore Library Cache
-        uses: actions/cache@v4
-        with:
-          path: Library
-          key: Library-Android-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-Android-
-
-      # Git-LFSのキャッシュを利用してダウンロード時間を短縮
-      - name: 4. Restore LFS Cache
-        uses: actions/cache@v4
-        with:
-          path: .git/lfs
-          key: LFS-${{ hashFiles('.lfs-assets-id') }}
-
-      - name: 5. Build Unity Project
-        uses: game-ci/unity-builder@v4
+          echo "Decoding keystore from GitHub Secrets..."
+          echo $KEYSTORE_BASE64 | base64 --decode > ${{ github.workspace }}/MyProject.keystore
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          targetPlatform: Android
-          # Unityのバージョンは固定することが推奨される
-          unityVersion: 6000.0.50f1
-          chownFilesTo: 1000:1000
+          # リポジトリのSecretsに登録したキーストアのBase64文字列
+          KEYSTORE_BASE64: ${{ secrets.UNITY_KEYSTORE_BASE64 }}
 
-      - name: 6. Upload Artifact
+      # 3. Unityでビルドを実行
+      - name: Build with Unity
+        run: |
+          UNITY_PATH="/home/poka/Unity/Hub/Editor/6000.0.50f1/Editor/Unity"
+
+          # --- ビルドコマンド ---
+          $UNITY_PATH -quit -batchmode -nographics \
+            -projectPath . \
+            -buildTarget Android \
+            -executeMethod BuildScript.PerformAndroidBuild \
+            -logFile ./build.log
+        env:
+          # リポジトリのSecretsからキーストアのパスワード情報を環境変数として渡す
+          KEYSTORE_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD }}
+          KEY_ALIAS_NAME: ${{ secrets.UNITY_KEYSTORE_ALIAS }}
+          KEY_ALIAS_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD}}
+
+      # 4. ビルド成果物(APK)をアップロード
+      # ワークフローの実行結果ページからダウンロードできるようにする
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          # ビルド成果物にGitのコミットハッシュを付けて分かりやすくする
-          name: Build-Android-${{ github.sha }}
-          path: build
-
-      - name: 7. Final Workspace Cleanup
-        # ビルドが成功しても失敗しても、必ずこのステップを実行する
-        if: always()
-        run: |
-          echo "Fixing permissions for the entire _work directory..."
-          # '_work'ディレクトリ全体を対象に所有者を変更する
-          sudo chown -R poka:poka /home/poka/actions-runner/_work
-          echo "Permissions fixed for the entire work directory."
+          name: Android-Build-APK
+          # BuildScript.csで指定した出力ファイルパス
+          path: ./Builds/maradoda.apk
