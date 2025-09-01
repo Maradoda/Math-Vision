@@ -51,3 +51,7 @@ Thumbs.db
 
 # Unity Keystore files
 *.keystore
+
+# Unity Editor crash logs
+/[Mm]ono/
+mono_crash.*
