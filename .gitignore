@@ -9,6 +9,7 @@
 .utmp/
 /[Mm]emory[Cc]aptures/
 /[Aa]ssets/AssetStoreTools*
+UpgradeLog.htm
 
 # Unity Burstコンパイラが生成するデバッグ情報。絶対にシップしないでください。
 *_BurstDebugInformation_DoNotShip/
