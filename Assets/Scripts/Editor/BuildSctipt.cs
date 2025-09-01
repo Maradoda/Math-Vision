@@ -39,9 +39,9 @@ public class BuildScript
             PlayerSettings.Android.keyaliasPass = keyAliasPass;
         }
 
-        EditorUserBuildSettings.buildAppBundle = true;
-        string outputPath = "Builds/MyGame.aab";
-
+        EditorUserBuildSettings.buildAppBundle = false;
+        string outputPath = "Builds/maradoda.apk";
+        
 
         // --- 3. ビルドの実行 ---
         var buildPlayerOptions = new BuildPlayerOptions
