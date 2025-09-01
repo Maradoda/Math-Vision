@@ -26,7 +26,7 @@ public class BuildScript
         Debug.Log("Building scenes: " + string.Join(", ", scenes));
 
 
-        PlayerSettings.Android.useCustomKeystore = false
+        PlayerSettings.Android.useCustomKeystore = false;
 
         EditorUserBuildSettings.buildAppBundle = false;
         string outputPath = "Builds/maradoda.apk";
