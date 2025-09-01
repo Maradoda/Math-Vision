@@ -48,3 +48,7 @@
 # macOS / Windows のOS固有ファイル
 .DS_Store
 Thumbs.db
+
+# Unity Editor crash logs
+/[Mm]ono/
+mono_crash.*
