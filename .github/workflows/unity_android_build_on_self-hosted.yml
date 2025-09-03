@@ -1,0 +1,53 @@
+# .github/workflows/unity-build.yml
+
+name: Unity Android Build on Self-Hosted
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build for Android (Test)
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          clean: false
+          lfs: true
+
+      # 2. キーストアの復元ステップを無効化 (コメントアウト)
+      # - name: Decode Keystore
+      #   run: |
+      #     echo "Decoding keystore from GitHub Secrets..."
+      #     echo $KEYSTORE_BASE64 | base64 --decode > ${{ github.workspace }}/maradoda.keystore
+      #   env:
+      #     KEYSTORE_BASE64: ${{ secrets.UNITY_KEYSTORE_BASE64 }}
+
+      - name: Kill Previous Unity Processes
+        run: pkill -9 Unity || true
+
+      - name: Build with Unity
+        run: |
+          UNITY_PATH="/home/poka/Unity/Hub/Editor/6000.0.50f1/Editor/Unity"
+          
+          $UNITY_PATH -quit -batchmode -nographics \
+            -projectPath . \
+            -buildTarget Android \
+            -executeMethod BuildScript.PerformAndroidBuild \
+            -logFile ./build.log
+        # envブロック全体を削除またはコメントアウト
+        # env:
+        #   KEYSTORE_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD }}
+        #   KEY_ALIAS_NAME: ${{ secrets.UNITY_KEYSTORE_ALIAS }}
+        #   KEY_ALIAS_PASS: ${{ secrets.UNITY_KEYSTORE_PASSWORD }}
+
+      - name: Upload Artifacts and Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test-Build-Result-${{ github.run_id }}
+          path: |
+            Builds/
+            build.log
