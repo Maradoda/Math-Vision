@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1571594009}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.2173913
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1931,7 +1931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2124,11 +2124,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2131460724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: -13}
-  m_SizeDelta: {x: 170, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.2, y: 0}
 --- !u!114 &1189515754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,7 +2149,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC\u89E3\u8AAC"
+  m_text: "\u56F31\u306B\u793A\u3057\u305F\u7ACB\u4F53ABCD-EFGH\u306F\u3001AB = AD
+    = 6cm\u3001AE = 4cm\u306E\u76F4\u65B9\u4F53\u3067\u3042\u308B\u3002\r\n\u9802\u70B9A\u3068\u9802\u70B9C\u3092\u7D50\u3073\u3001\u7DDA\u5206AC\u4E0A\u306B\u3042\u308B\u70B9\u3092P\u3068\u3059\u308B\u3002\u9802\u70B9H\u3068\u70B9P\u3092\u7D50\u3076\u3002\r\n\u6B21\u306E\u5404\u554F\u306B\u7B54\u3048\u3088\u3002\r\n\r\n\r\n[\u554F1]\u6B21\u306E\u3010
+    (1) \u3011\u306B\u5F53\u3066\u306F\u307E\u308B\u6570\u5B57\u3092\u7B54\u3048\u3088\u3002\r\n\u56F31\u306B\u304A\u3044\u3066\u3001\u9802\u70B9D\u3068\u70B9P\u3001\u9802\u70B9E\u3068\u70B9P\u3092\u305D\u308C\u305E\u308C\u7D50\u3093\u3060\u5834\u5408\u3092\u8003\u3048\u308B\u3002\r\n\u70B9P\u304C\u7DDA\u5206AC\u306E\u4E2D\u70B9\u306E\u3068\u304D\u3001\u7ACB\u4F53P-AEHD\u306E\u4F53\u7A4D\u306F\u3001\u3010
+    (1) \u3011\u33A4\u3067\u3042\u308B\u3002\r\n\r\n[\u554F2]\u6B21\u306E\u3010 (2)
+    \u3011\u306B\u5F53\u3066\u306F\u307E\u308B\u6570\u5B57\u3092\u7B54\u3048\u3088\u3002\r\n\u56F32\u306F\u3001\u56F31\u306B\u304A\u3044\u3066\u3001\u9802\u70B9\uFF26\u3068\u9802\u70B9\uFF28\u3001\u9802\u70B9\uFF26\u3068\u70B9\uFF30\u3092\u305D\u308C\u305E\u308C\u7D50\u3093\u3060\u5834\u5408\u3092\u8868\u3057\u3066\u3044\u308B\u3002\u25B3FPH\u306E\u9762\u7A4D\u306F\u3001\u3010
+    (2 )\u3011\u221A\u3010 (2) \u3011\u33A0\u3067\u3042\u308B\u3002\r\n\r\n\u203B\u3010
+    (2) \u3011\u221A\u3010 (2) \u3011\u3067\u7B54\u3048\u304C16\u221A3\u306A\u3069\u306E\u5834\u5408\u3001\u56DE\u7B54\u6B04\u306B\u306F\u300C163\u300D\u3068\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9de433863a57a6142871ac27e914aacf, type: 2}
   m_sharedMaterial: {fileID: -1307407658097810223, guid: 9de433863a57a6142871ac27e914aacf, type: 2}
@@ -2158,8 +2164,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2176,13 +2182,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2214,7 +2220,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -29.98938, y: -122.95068, z: -28.468384, w: -124.45166}
+  m_margin: {x: 10.989929, y: 0.11105345, z: -0.6742552, w: -124.45166}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3111,7 +3117,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571594008}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3120,8 +3126,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: NaN}
-  m_SizeDelta: {x: 20, y: 161.66656}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571594010
 MonoBehaviour:
@@ -4184,6 +4190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2131460724}
+  - component: {fileID: 2131460725}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -4200,17 +4207,31 @@ RectTransform:
   m_GameObject: {fileID: 2131460723}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 4.6, y: 4.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1189515753}
   m_Father: {fileID: 1122337910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00027198426, y: -0.000008583069}
-  m_SizeDelta: {x: 0, y: 300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &2131460725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131460723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 0.2
 --- !u!65 &2138156205
 BoxCollider:
   m_ObjectHideFlags: 0
