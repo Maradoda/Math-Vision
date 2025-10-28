@@ -11,6 +11,8 @@ public class YearQuestionData
     public List<Sprite> questionImages;
     public List<string> questionAnswers; // 各問題の答え
     public string questionText;          // ▼ 変更点：問題本文を保存する変数を追加
+
+    public string ansertext; //解説文を保存する
 }
 
 public class GameManager : MonoBehaviour

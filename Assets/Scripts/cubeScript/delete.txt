@@ -1,0 +1,18 @@
+2025/10/22 controlP-AEHDButton.csから消しました。
+〈概要〉点Pを動かす必要がなくなったため
+        // ② 点P を A の位置に戻す
+        if (pointPObject != null)
+        {
+            GridPositionMapper mapper = FindObjectOfType<GridPositionMapper>();
+            if (mapper != null)
+            {
+                Vector3 A = mapper.GetPosition("7_A");
+                pointPObject.transform.position = A;
+                Debug.Log("点Pの位置を A に戻しました");
+            }
+            else
+            {
+                Debug.LogWarning("GridPositionMapper が見つかりませんでした");
+            }
+        }
+

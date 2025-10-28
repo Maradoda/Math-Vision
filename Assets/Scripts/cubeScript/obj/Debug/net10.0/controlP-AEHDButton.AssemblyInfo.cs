@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("hover")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("controlP-AEHDButton")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("hover")]
-[assembly: System.Reflection.AssemblyTitleAttribute("hover")]
+[assembly: System.Reflection.AssemblyProductAttribute("controlP-AEHDButton")]
+[assembly: System.Reflection.AssemblyTitleAttribute("controlP-AEHDButton")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // MSBuild WriteCodeFragment クラスによって生成されました。

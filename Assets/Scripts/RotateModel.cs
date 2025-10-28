@@ -1,25 +1,32 @@
+//図形を回転させるプログラム
+
 using UnityEngine;
-using UnityEngine.EventSystems; // UIのドラッグイベントを扱うために必要
+using UnityEngine.EventSystems;
 
 public class RotateModel : MonoBehaviour, IDragHandler
 {
-    // Inspectorから回転させたい3Dオブジェクトを設定
-    [Tooltip("回転させる3Dオブジェクトをここに設定")]
+    [Header("回転設定")]
+    [Tooltip("回転させる3Dオブジェクトを設定")]
     public Transform targetObject;
 
-    // 回転の速さ
-    [Tooltip("ドラッグした際の回転速度")]
+    [Tooltip("ドラッグ時の回転速度")]
     public float rotationSpeed = 2.0f;
 
-    // UIがドラッグされたときに毎フレーム呼ばれる関数
+    [Header("ドラッグ可能エリア")]
+    [Tooltip("マウスドラッグが有効なUIエリア（RectTransform）")]
+    public RectTransform dragArea;
+
     public void OnDrag(PointerEventData eventData)
     {
-        if (targetObject == null) return;
+        if (targetObject == null || dragArea == null)
+            return;
 
-        // Y軸周りの回転（水平方向のドラッグ）
+        // マウスがドラッグエリア内にあるかをチェック
+        if (!RectTransformUtility.RectangleContainsScreenPoint(dragArea, eventData.position, eventData.pressEventCamera))
+            return;
+
+        // ドラッグ操作による回転
         targetObject.Rotate(Vector3.up, -eventData.delta.x * rotationSpeed, Space.World);
-
-        // X軸周りの回転（垂直方向のドラッグ）
         targetObject.Rotate(Vector3.right, eventData.delta.y * rotationSpeed, Space.World);
     }
 }
