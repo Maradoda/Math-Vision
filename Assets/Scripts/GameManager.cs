@@ -3,6 +3,15 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
 
+// ★★★ 追加クラス：1つの問題に対するSTEPごとの解説文をまとめる ★★★
+[System.Serializable]
+public class QuestionExplanation
+{
+    // Inspectorで入力しやすいようにTextArea属性をつける
+    [TextArea(3, 10)]
+    public List<string> stepTexts; // STEP1, STEP2, STEP3... の文章リスト
+}
+
 // 年度ごとのデータをまとめるクラス
 [System.Serializable]
 public class YearQuestionData
@@ -10,9 +19,12 @@ public class YearQuestionData
     public string yearIdentifier;
     public List<Sprite> questionImages;
     public List<string> questionAnswers; // 各問題の答え
-    public string questionText;          // ▼ 変更点：問題本文を保存する変数を追加
+    
+    [TextArea(3, 10)]
+    public string questionText;          // 問題本文
 
-    public string ansertext; //解説文を保存する
+    // ★★★ 変更：解説文データのリスト（問1用、問2用...） ★★★
+    public List<QuestionExplanation> explanationList; 
 }
 
 public class GameManager : MonoBehaviour
@@ -38,7 +50,6 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    // 識別子をもとに、現在の年度データを設定する
     public void SetCurrentYear(string identifier)
     {
         currentYearData = allYearData.FirstOrDefault(data => data.yearIdentifier == identifier);

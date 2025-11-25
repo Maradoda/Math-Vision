@@ -238,7 +238,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 265.8
+  m_fontSize: 293.05
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -597,6 +597,14 @@ MonoBehaviour:
   individualResultImages: []
   correctSprite: {fileID: 0}
   incorrectSprite: {fileID: 0}
+  explanationTextDisplay: {fileID: 1189515754}
+  explanationQuestionButtons:
+  - {fileID: 635261651}
+  - {fileID: 717580271}
+  explanationStepButtons:
+  - {fileID: 1514655481}
+  - {fileID: 1235944394}
+  - {fileID: 536171058}
 --- !u!114 &369072687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2298,7 +2306,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1571594009}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.21739134
+  m_Size: 0.21739133
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2645,7 +2653,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 474.25
+  m_fontSize: 500
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3643,7 +3651,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 474.25
+  m_fontSize: 500
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3708,7 +3716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 1.9456437
+  m_AspectRatio: 1.9625931
 --- !u!1 &1514655479
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,7 +5182,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 769.55
+  m_fontSize: 830
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1
