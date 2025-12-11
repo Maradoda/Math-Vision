@@ -50,6 +50,8 @@ public class ControlPQFButton : MonoBehaviour
                 p_aehd.enabled = false;
                 Debug.Log("createP-AEHD を無効化しました");
             }
+            p_aehdObject.SetActive(false);
+            Debug.Log("createP-AEHD オブジェクトを非表示にしました");
         }
 
         // createPQF を有効化 ＋ オブジェクト表示
