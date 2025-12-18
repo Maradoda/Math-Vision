@@ -436,7 +436,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 278.8
+  m_fontSize: 292.85
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1026,13 +1026,6 @@ MonoBehaviour:
   correctSprite: {fileID: 0}
   incorrectSprite: {fileID: 0}
   explanationTextDisplay: {fileID: 1189515754}
-  explanationQuestionButtons:
-  - {fileID: 635261651}
-  - {fileID: 717580271}
-  explanationStepButtons:
-  - {fileID: 1514655481}
-  - {fileID: 1235944394}
-  - {fileID: 536171058}
 --- !u!114 &369072687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,7 +1400,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536171059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369072686}
+        m_TargetAssemblyTypeName: ContentPageController, Assembly-CSharp
+        m_MethodName: OnClickStep3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &536171059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1644,21 +1649,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: controlP_AEHDButton, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ToggleVisibility, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 369072686}
+        m_TargetAssemblyTypeName: ContentPageController, Assembly-CSharp
+        m_MethodName: OnClickQuestion1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2112,21 +2105,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ControlPQFButton, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ToggleVisibility, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 369072686}
+        m_TargetAssemblyTypeName: ContentPageController, Assembly-CSharp
+        m_MethodName: OnClickQuestion2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2732,7 +2713,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1571594009}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.21739131
+  m_Size: 0.21739133
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3216,13 +3197,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u56F31\u306B\u793A\u3057\u305F\u7ACB\u4F53ABCD-EFGH\u306F\u3001AB = AD
-    = 6cm\u3001AE = 4cm\u306E\u76F4\u65B9\u4F53\u3067\u3042\u308B\u3002\r\n\u9802\u70B9A\u3068\u9802\u70B9C\u3092\u7D50\u3073\u3001\u7DDA\u5206AC\u4E0A\u306B\u3042\u308B\u70B9\u3092P\u3068\u3059\u308B\u3002\u9802\u70B9H\u3068\u70B9P\u3092\u7D50\u3076\u3002\r\n\u6B21\u306E\u5404\u554F\u306B\u7B54\u3048\u3088\u3002\r\n\r\n\r\n[\u554F1]\u6B21\u306E\u3010
-    (1) \u3011\u306B\u5F53\u3066\u306F\u307E\u308B\u6570\u5B57\u3092\u7B54\u3048\u3088\u3002\r\n\u56F31\u306B\u304A\u3044\u3066\u3001\u9802\u70B9D\u3068\u70B9P\u3001\u9802\u70B9E\u3068\u70B9P\u3092\u305D\u308C\u305E\u308C\u7D50\u3093\u3060\u5834\u5408\u3092\u8003\u3048\u308B\u3002\r\n\u70B9P\u304C\u7DDA\u5206AC\u306E\u4E2D\u70B9\u306E\u3068\u304D\u3001\u7ACB\u4F53P-AEHD\u306E\u4F53\u7A4D\u306F\u3001\u3010
-    (1) \u3011\u33A4\u3067\u3042\u308B\u3002\r\n\r\n[\u554F2]\u6B21\u306E\u3010 (2)
-    \u3011\u306B\u5F53\u3066\u306F\u307E\u308B\u6570\u5B57\u3092\u7B54\u3048\u3088\u3002\r\n\u56F32\u306F\u3001\u56F31\u306B\u304A\u3044\u3066\u3001\u9802\u70B9\uFF26\u3068\u9802\u70B9\uFF28\u3001\u9802\u70B9\uFF26\u3068\u70B9\uFF30\u3092\u305D\u308C\u305E\u308C\u7D50\u3093\u3060\u5834\u5408\u3092\u8868\u3057\u3066\u3044\u308B\u3002\u25B3FPH\u306E\u9762\u7A4D\u306F\u3001\u3010
-    (2 )\u3011\u221A\u3010 (2) \u3011\u33A0\u3067\u3042\u308B\u3002\r\n\r\n\u203B\u3010
-    (2) \u3011\u221A\u3010 (2) \u3011\u3067\u7B54\u3048\u304C16\u221A3\u306A\u3069\u306E\u5834\u5408\u3001\u56DE\u7B54\u6B04\u306B\u306F\u300C163\u300D\u3068\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\r\n"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9de433863a57a6142871ac27e914aacf, type: 2}
   m_sharedMaterial: {fileID: -1307407658097810223, guid: 9de433863a57a6142871ac27e914aacf, type: 2}
@@ -3384,7 +3359,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1235944395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369072686}
+        m_TargetAssemblyTypeName: ContentPageController, Assembly-CSharp
+        m_MethodName: OnClickStep2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1235944395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3985,7 +3972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 1.9542296
+  m_AspectRatio: 1.9624993
 --- !u!1 &1514655479
 GameObject:
   m_ObjectHideFlags: 0
@@ -4069,7 +4056,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1514655482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369072686}
+        m_TargetAssemblyTypeName: ContentPageController, Assembly-CSharp
+        m_MethodName: OnClickStep1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1514655482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6098,7 +6097,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 802.55
+  m_fontSize: 830
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1

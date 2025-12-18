@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
 
-// ★★★ 追加クラス：1つの問題に対するSTEPごとの解説文をまとめる ★★★
+// 1つの問題に対するSTEPごとの解説文をまとめる
 [System.Serializable]
 public class QuestionExplanation
 {
