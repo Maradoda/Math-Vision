@@ -1,16 +1,19 @@
-//7controlP-AEHDButton
-
 using UnityEngine;
 
 public class controlP_AEHDButton : MonoBehaviour
 {
-    public GameObject P_AEHDObject;     // createP-AEHD (MovingPyramidLoop) がアタッチされたオブジェクト
-    public GameObject pointPObject;     // 「7_P」オブジェクト（MovePointP がアタッチ）
-    public GameObject createPQFObject;  // createPQF がアタッチされたオブジェクト
+    public GameObject P_AEHDObject;     // createP-AEHD
+    public GameObject pointPObject;     // 7_P
+    public GameObject createPQFObject;  // createPQF
+    void Start()
+    {
+        // ★ シーン開始時に「ボタンを押した状態」にする
+        OnClick();
+    }
 
     public void OnClick()
     {
-        // ① createPQF を無効化 ＋ オブジェクト非表示
+        // ① createPQF を無効化 ＋ 非表示
         if (createPQFObject != null)
         {
             var pqf = createPQFObject.GetComponent<createPQF>();
@@ -26,25 +29,17 @@ public class controlP_AEHDButton : MonoBehaviour
             GridPositionMapper mapper = FindObjectOfType<GridPositionMapper>();
             if (mapper != null)
             {
-                // 「7_A」と「7_C」の位置を取得
                 Vector3 posA = mapper.GetPosition("7_A");
                 Vector3 posC = mapper.GetPosition("7_C");
 
-                // 中点を計算
                 Vector3 midpoint = (posA + posC) / 2f;
-
-                // Pを中点へ移動
                 pointPObject.transform.position = midpoint;
 
                 Debug.Log("点PをAとCの中点に移動しました");
             }
-            else
-            {
-                Debug.LogWarning("GridPositionMapper が見つかりませんでした");
-            }
         }
 
-        // ③ createP-AEHD を有効化 ＋ オブジェクト表示
+        // ③ createP-AEHD を有効化 ＋ 表示
         if (P_AEHDObject != null)
         {
             var ae = P_AEHDObject.GetComponent<MovingPyramidLoop>();

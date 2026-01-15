@@ -43,7 +43,7 @@ public class RotationTest : MonoBehaviour
         // ドラッグ中のみ回転処理
         if (_isDragging && Input.GetMouseButton(0))
         {
-            float rotX = Input.GetAxis("Mouse Y") * _speed * -1; // 上下方向
+            float rotX = Input.GetAxis("Mouse Y") * _speed ; // 上下方向
             float rotY = -Input.GetAxis("Mouse X") * _speed;      // 左右方向
             Vector3 rotation = new Vector3(rotX, rotY, 0);
             _target.Rotate(rotation, Space.World);

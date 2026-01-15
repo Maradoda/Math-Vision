@@ -1,7 +1,3 @@
-//適応した年度の点の変数を作り、座標を取得する。
-//使い方
-//取得したい点（メッシュボールなど）にプログラムをアタッチメントするだけ。
-
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -14,7 +10,6 @@ public class GridPositionMapper : MonoBehaviour
 
     void Start()
     {
-        // GameManager から年度を取得
         var data = GameManager.Instance?.currentYearData;
 
         if (data == null)
@@ -23,33 +18,30 @@ public class GridPositionMapper : MonoBehaviour
             return;
         }
 
-        // yearIdentifier = "R7" → "7" を取り出す
         string number = data.yearIdentifier.Replace("R", "");
-        yearPrefix = number + "_";     // 例： "7_"
+        yearPrefix = number + "_";
 
         Debug.Log("年度プリフィックス：" + yearPrefix);
 
-        // 探索して登録する名前リスト（必要なら A〜H を増やす）
         string[] names = new string[]
         {
             "A","B","C","D",
             "E","F","G","H",
-            "P"
+            "P","M","Q"
         };
 
         RegisterObjects(names);
+        
+        Debug.Log("GridPositionMapper instance ID = " + GetInstanceID());
     }
 
-    /// <summary>
-    /// 必要なオブジェクトを年度に合わせて登録する
-    /// </summary>
     private void RegisterObjects(string[] names)
     {
         GameObject[] allObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
         foreach (string letter in names)
         {
-            string targetName = yearPrefix + letter;   // 例： "7_A"
+            string targetName = yearPrefix + letter;
             GameObject found = null;
 
             foreach (GameObject obj in allObjects)
@@ -76,14 +68,21 @@ public class GridPositionMapper : MonoBehaviour
     {
         foreach (var pair in objectMap)
         {
-            if (pair.Value != null)
-                positionMap[pair.Key] = pair.Value.transform.position;
+            if (pair.Value == null) continue;
+
+            Vector3 currentPos = pair.Value.transform.position;
+            Vector3 oldPos = positionMap[pair.Key];
+
+            // ★ 座標が変わったときだけログを出す
+            if (currentPos != oldPos)
+            {
+                Debug.Log($"{pair.Key} 座標更新: {oldPos} → {currentPos}");
+            }
+
+            positionMap[pair.Key] = currentPos;
         }
     }
 
-    /// <summary>
-    /// 例：「7_A」など完全な名前で座標取得
-    /// </summary>
     public Vector3 GetPosition(string fullName)
     {
         if (positionMap.ContainsKey(fullName))
@@ -93,9 +92,6 @@ public class GridPositionMapper : MonoBehaviour
         return Vector3.zero;
     }
 
-    /// <summary>
-    /// "A" を渡すと "7_A" に自動変換して座標取得
-    /// </summary>
     public Vector3 GetPositionAuto(string letter)
     {
         string key = yearPrefix + letter;
@@ -106,4 +102,5 @@ public class GridPositionMapper : MonoBehaviour
         Debug.LogWarning($"{key} の座標は登録されていません");
         return Vector3.zero;
     }
+
 }

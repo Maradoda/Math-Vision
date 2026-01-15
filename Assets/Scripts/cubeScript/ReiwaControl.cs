@@ -16,7 +16,7 @@ public class ReiwaController : MonoBehaviour
     public ControlPQF6Button controlPQF_R6;
 
     [Header("令和5年（未実装）")]
-    public MonoBehaviour controlP_R5_placeholder;
+    public controlP_APMQButton controlQ_APM_R5;
     public MonoBehaviour controlQ_R5_placeholder;
 
     void Start()
@@ -54,8 +54,8 @@ public class ReiwaController : MonoBehaviour
                 break;
 
             case "R5":
-                Debug.Log("→ 令和5年モード（未実装）");
-                button1.onClick.AddListener(() => Debug.Log("R5: Button1（未実装）"));
+                Debug.Log("→ 令和5年モード");
+                button1.onClick.AddListener(controlQ_APM_R5.OnClick);
                 button2.onClick.AddListener(() => Debug.Log("R5: Button2（未実装）"));
                 break;
 
@@ -65,4 +65,3 @@ public class ReiwaController : MonoBehaviour
         }
     }
 }
-
