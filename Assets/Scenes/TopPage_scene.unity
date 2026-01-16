@@ -178,7 +178,7 @@ MonoBehaviour:
     - 24
     - 123
     questionText: "\u56F31\u306B\u793A\u3057\u305F\u7ACB\u4F53ABCD-EFGH\u306F\u3001\n\nAB
-      = AD = 6\u339D\nAE = 4\u339D\n\n\u306E\u76F4\u65B9\u4F53\u3067\u3042\u308B\u3002
+      = AD = 6\u339D\u3000\u3000\u304A\u3063\u3061\u3087\u3070\u304B\nAE = 4\u339D\n\n\u306E\u76F4\u65B9\u4F53\u3067\u3042\u308B\u3002
       \n\n\u9802\u70B9A\u3068\u9802\u70B9C\u3092\u7D50\u3073\u3001\u7DDA\u5206AC\u4E0A\u306B\u3042\u308B\u70B9\u3092P\u3068\u3059\u308B\u3002\u9802\u70B9H\u3068\u70B9P\u3092\u7D50\u3076\u3002\n\u6B21\u306E\u5404\u554F\u306B\u7B54\u3048\u3088\u3002
       \n\n [\u554F1] \n\u6B21\u306E\u3010 (1) \u3011\u306B\u5F53\u3066\u306F\u307E\u308B\u6570\u5B57\u3092\u7B54\u3048\u3088\u3002\n\n\u56F31\u306B\u304A\u3044\u3066\u3001\u9802\u70B9D\u3068\u70B9P\u3001\u9802\u70B9E\u3068\u70B9P\u3092\u305D\u308C\u305E\u308C\u7D50\u3093\u3060\u5834\u5408\u3092\u8003\u3048\u308B\u3002\n\n\u70B9P\u304C\u7DDA\u5206AC\u306E\u4E2D\u70B9\u306E\u3068\u304D\u3001\u7ACB\u4F53P-AEHD\u306E\u4F53\u7A4D\u306F\u3001\u3010
       (1) \u3011\u33A4\u3067\u3042\u308B\u3002 \n\n\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\n\n[\u554F2]
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 88.15
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 88.15
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 88.15
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2122,7 +2122,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 88.15
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2658,7 +2658,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 440
+  m_fontSize: 392.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3066,7 +3066,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 88.15
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3202,7 +3202,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1894150247}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6169393
+  m_Size: 0.6167173
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3433,7 +3433,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 88.15
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4156,7 +4156,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 88.15
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
