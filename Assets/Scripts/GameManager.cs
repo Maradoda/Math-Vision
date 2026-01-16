@@ -18,6 +18,8 @@ public class YearQuestionData
 {
     public string yearIdentifier;
     public List<Sprite> questionImages;
+
+    public List<Sprite> answerImages;
     public List<string> questionAnswers; // 各問題の答え
     
     [TextArea(3, 10)]
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     // 現在選択されている年度のデータ
     public YearQuestionData currentYearData { get; private set; }
+
+    
 
     private void Awake()
     {

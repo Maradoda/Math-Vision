@@ -3473,7 +3473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74ca099b59182e4487ff9a483481482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointPObject: {fileID: 0}
+  pointPObject: {fileID: 1239946541}
   pqfObject: {fileID: 1108204668}
   p_aehdObject: {fileID: 496729784}
 --- !u!1 &1122337909
@@ -4108,6 +4108,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70378765a5686844594fde69f40519e6, type: 3}
+--- !u!1 &1239946541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4347042290156467855, guid: 70378765a5686844594fde69f40519e6, type: 3}
+  m_PrefabInstance: {fileID: 1239946540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1293485206
 GameObject:
   m_ObjectHideFlags: 0

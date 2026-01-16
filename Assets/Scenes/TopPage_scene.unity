@@ -172,6 +172,8 @@ MonoBehaviour:
     questionImages:
     - {fileID: 21300000, guid: 5f7c8e59873446345b086d54bb7bd1a4, type: 3}
     - {fileID: 21300000, guid: 68683fd109a3cee45bb05b30b5336b2f, type: 3}
+    answerImages:
+    - {fileID: 21300000, guid: 6f042e3ccf7c1224393e6a133bb5ec74, type: 3}
     questionAnswers:
     - 24
     - 123
@@ -192,7 +194,9 @@ MonoBehaviour:
         6 \xD7 4 = 24---\u2460"
       - "\u9802\u70B9P\u304B\u3089\u8FBAAD\u306B\u5782\u7DDA\u3092\u5F15\u304F\u3002\u4EA4\u70B9\u3092Q\u3068\u3059\u308B\u3002PQ\u3092\u56DB\u89D2\u9310P-AEHD\u306E\u9AD8\u3055\u3068\u3059\u308B\u3002"
       - "\u56DB\u89D2\u5F62ABCD\u3067\u8003\u3048\u308B\u3002\u6B63\u65B9\u5F62\u306E\u5BFE\u89D2\u7DDA\u306F\u4E2D\u70B9\u3067\u4EA4\u308F\u308B\u3002\u70B9P\u306F\u5BFE\u89D2\u7DDADB\u306E\u4E2D\u70B9\u3067\u3082\u3042\u308B\u3002\u3088\u3063\u3066\u3001\u6C34\u5E73\u65B9\u5411\u3067\u8003\u3048\u308C\u3070\u3001\u5404\u8FBA\u3082\uFF12\u7B49\u5206\u3059\u308B\u3002PQ\u306F\u8FBAAB\u306E\u534A\u5206\u3067\u3042\u308B\u304B\u3089PQ
-        = 3---\u2461"
+        = 3---\u2461\n\u3053\u308C\u304C\u4E09\u89D2\u5F62PHF\u306E\u9AD8\u3055\u3068\u306A\u308B\u3002(R7_6.JPG)\r\n\u3000\u3000\u3088\u3063\u3066\u3001\u2460\u3068\u2461\u3088\u308A\u3001\u4E09\u89D2\u5F62PHF\u306E\u9762\u7A4D
+        = 6\u221A2 * 2\u221A6 * 1/2 = 6\u221A12 = 12\u221A3 ...\u7B54\u3048 (R7_7.JPG)
+        \r\n"
     - stepTexts:
       - "\u4E09\u89D2\u5F62PHF\u306E\u9762\u7A4D\u3092\u6C42\u3081\u3066\u3044\u304F\u3002\u516C\u5F0F\u306F(\u5E95\u8FBA
         \xD7 \u9AD8\u3055 \xD7 1/2)\u3002\r\n\u307E\u305A\u306F\u5E95\u8FBAHF\u306E\u9577\u3055\u3092\u6C42\u3081\u3066\u3044\u304F\u3002\r\n\r\n\u56DB\u89D2\u5F62EFGH\u306E\u5BFE\u89D2\u7DDA\u306A\u306E\u3067\u3001\u534A\u5206\u306E\u76F4\u89D2\u4E09\u89D2\u5F62EFH(\u4E09\u89D2\u5F62FGH\u3067\u3082\u3088\u3044)\u3067\u4E09\u5E73\u65B9\u306E\u5B9A\u7406\u3092\u4F7F\u3063\u3066\u3001\u659C\u8FBA(\u5BFE\u89D2\u7DDAHF)\u306E\u9577\u3055\u3092\u6C42\u3081\u3066\u3044\u304F\u3002\u4E09\u5E73\u65B9\u306E\u5B9A\u7406\u306E\u516C\u5F0F\u306F(\u659C\u8FBA\xB2
@@ -208,6 +212,7 @@ MonoBehaviour:
   - yearIdentifier: R6
     questionImages:
     - {fileID: 21300000, guid: 54a55d48b9568924d8938a7a860f7982, type: 3}
+    answerImages: []
     questionAnswers:
     - 90
     - 48
@@ -237,6 +242,7 @@ MonoBehaviour:
     questionImages:
     - {fileID: 21300000, guid: f39050adc2c4d454cbaa2263a64372fa, type: 3}
     - {fileID: 21300000, guid: 88ee4575777f8714984572ae24c9676f, type: 3}
+    answerImages: []
     questionAnswers:
     - 32
     - 42
@@ -272,6 +278,7 @@ MonoBehaviour:
     questionImages:
     - {fileID: 21300000, guid: 63115272489d25347ad73517cd13c271, type: 3}
     - {fileID: 21300000, guid: 47662d8bf7b2e1f428a1a09bab57385a, type: 3}
+    answerImages: []
     questionAnswers:
     - 172
     - 112
@@ -289,6 +296,7 @@ MonoBehaviour:
     questionImages:
     - {fileID: 21300000, guid: 4ed6b0fc521009c4bae77ff85aead1d4, type: 3}
     - {fileID: 21300000, guid: 043b9bbe4c1934d48a8ba5578786968f, type: 3}
+    answerImages: []
     questionAnswers:
     - 5
     - 965
@@ -306,6 +314,7 @@ MonoBehaviour:
     questionImages:
     - {fileID: 21300000, guid: 7d4a782962a27f34fa557a06c6a7d43e, type: 3}
     - {fileID: 21300000, guid: 4400681858eb48c46bea9b654b5363be, type: 3}
+    answerImages: []
     questionAnswers:
     - 245
     - 144
@@ -323,6 +332,7 @@ MonoBehaviour:
     questionImages:
     - {fileID: 21300000, guid: bca0746ce1cfff142833be4a0d42ff3f, type: 3}
     - {fileID: 21300000, guid: bef859824b87bb243919a7d52a580a1c, type: 3}
+    answerImages: []
     questionAnswers:
     - 6
     - 123
@@ -3194,8 +3204,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1894150248}
   m_HandleRect: {fileID: 1894150247}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.6169401
+  m_Value: 1.0000002
+  m_Size: 0.61693937
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
