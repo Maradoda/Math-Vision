@@ -13,7 +13,7 @@ public class ReiwaController : MonoBehaviour
 
     [Header("令和6年のスクリプト")]
     public controlP_ABEDButton controlP_ABED_R6;
-    public ControlPQF6Button controlPQF_R6;
+    public ControlViewTop controlViewTop_R6;
 
     [Header("令和5年（未実装）")]
     public controlP_APMQButton controlQ_APM_R5;
@@ -49,8 +49,8 @@ public class ReiwaController : MonoBehaviour
 
             case "R6":
                 Debug.Log("→ 令和6年モード");
-                button1.onClick.AddListener(controlP_ABED_R6.OnClick);
-                button2.onClick.AddListener(controlPQF_R6.OnClick);
+                button1.onClick.AddListener(controlViewTop_R6.OnClick);
+                button2.onClick.AddListener(controlP_ABED_R6.OnClick);
                 break;
 
             case "R5":
