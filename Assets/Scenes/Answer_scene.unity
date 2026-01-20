@@ -1785,8 +1785,8 @@ MonoBehaviour:
   controlPQF_R7: {fileID: 1108204673}
   controlP_ABED_R6: {fileID: 274995980}
   controlViewTop_R6: {fileID: 302825978}
-  controlQ_APM_R5: {fileID: 238365754}
-  controlQ_R5_placeholder: {fileID: 0}
+  StepMovePointPQ_R5: {fileID: 2004647512}
+  controlP_APMQ_R5: {fileID: 238365754}
 --- !u!1 &683392521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2044,6 @@ GameObject:
   - component: {fileID: 717580273}
   - component: {fileID: 717580272}
   - component: {fileID: 717580270}
-  - component: {fileID: 717580276}
   - component: {fileID: 717580277}
   - component: {fileID: 717580278}
   m_Layer: 5
@@ -2126,26 +2125,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717580268}
   m_CullTransparentMesh: 1
---- !u!114 &717580276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717580268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6bf24d3abff7c44bb307556e062faa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button1: {fileID: 635261651}
-  button2: {fileID: 717580277}
-  controlP_AEHD_R7: {fileID: 496729789}
-  controlPQF_R7: {fileID: 1108204673}
-  controlP_ABED_R6: {fileID: 274995980}
-  controlViewTop_R6: {fileID: 0}
-  controlQ_APM_R5: {fileID: 238365754}
-  controlQ_R5_placeholder: {fileID: 0}
 --- !u!114 &717580277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2220,8 +2199,8 @@ MonoBehaviour:
   controlPQF_R7: {fileID: 1108204673}
   controlP_ABED_R6: {fileID: 274995980}
   controlViewTop_R6: {fileID: 302825978}
-  controlQ_APM_R5: {fileID: 238365754}
-  controlQ_R5_placeholder: {fileID: 0}
+  StepMovePointPQ_R5: {fileID: 2004647512}
+  controlP_APMQ_R5: {fileID: 238365754}
 --- !u!1 &737188320
 GameObject:
   m_ObjectHideFlags: 0
@@ -6553,6 +6532,53 @@ Transform:
   - {fileID: 813009038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2004647511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2004647513}
+  - component: {fileID: 2004647512}
+  m_Layer: 0
+  m_Name: PQ
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2004647512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004647511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3c5863a70d62a44aa7a134f44b6551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveType: 0
+  speed: 1
+  controlP_APMQ_R5: {fileID: 238365754}
+--- !u!4 &2004647513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004647511}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1292.6343, y: 276.3245, z: 317.54333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2011666563
 GameObject:
   m_ObjectHideFlags: 0
@@ -6848,3 +6874,4 @@ SceneRoots:
   - {fileID: 274995984}
   - {fileID: 885102601}
   - {fileID: 238365752}
+  - {fileID: 2004647513}
